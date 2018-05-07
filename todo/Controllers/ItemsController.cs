@@ -46,6 +46,13 @@ namespace ToDoList.Controllers
         {
             return View();
         }
+        [HttpGet("/items/delete/{id}")]
+        public ActionResult DeleteAll(int id)
+        {
+            Item.Delete(id);
+            List<Item> allItems = Item.GetAll();
+            return View("Index", allItems);
+        }
 
     }
 }
